@@ -2,6 +2,7 @@
   "name": "@whthduck/flaword",
   "version": "0.0.1",
   "description": "A library validate and prevent harmful request if which like a SQL injection, NoSQL injection, Javascript injection",
+  "homepage": "https://github.com/whthduck/flaword#readme",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -14,7 +15,8 @@
     "test": "ava"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
   },
   "repository": {
     "type": "git",

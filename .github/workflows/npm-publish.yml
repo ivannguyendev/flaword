@@ -21,7 +21,7 @@ jobs:
 
       - run: yarn && yarn build
 
-      - name: Pushlish to NPM
+      - name: Pushlish to GIT
         run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GIT_TOKEN }}
@@ -31,3 +31,4 @@ jobs:
         with:
           token: ${{ secrets.NPM_TOKEN }}
           registry: https://registry.npmjs.org/
+          access: public
