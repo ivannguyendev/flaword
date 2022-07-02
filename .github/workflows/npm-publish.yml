@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  release:
+  release-github:
     runs-on: ubuntu-latest
     if: "startsWith(github.event.head_commit.message, '[RELEASE]')"
     permissions: 
@@ -18,17 +18,28 @@ jobs:
           node-version: 12
           registry-url: 'https://npm.pkg.github.com'
           scope: '@whthduck'
-
       - run: yarn && yarn build
-
       - name: Pushlish to GIT
         run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GIT_TOKEN }}
 
+  release-npm:
+    runs-on: ubuntu-latest
+    if: "startsWith(github.event.head_commit.message, '[RELEASE]')"
+    permissions: 
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 12
+      - run: yarn && yarn build
       - name: Pushlish to NPM
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
           registry: https://registry.npmjs.org/
           access: public
+          check-version: false
