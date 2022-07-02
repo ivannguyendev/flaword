@@ -39,7 +39,7 @@ jobs:
       - name: Pushlish to NPM
         uses: JS-DevTools/npm-publish@v1
         with:
-          token: ${{ secrets.NPM_TOKEN }}
+          token: ${{ secrets.GIT_TOKEN }}
           registry: https://registry.npmjs.org/
           access: public
           check-version: false
