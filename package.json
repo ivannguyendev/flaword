@@ -1,5 +1,5 @@
 {
-  "name": "flaword",
+  "name": "@whthduck/flaword",
   "version": "0.0.1",
   "description": "A library validate and prevent harmful request if which like a SQL injection, NoSQL injection, Javascript injection",
   "main": "dist/index.js",

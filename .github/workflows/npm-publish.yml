@@ -11,15 +11,23 @@ jobs:
       contents: read
       packages: write
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       # Setup .npmrc file to publish to npm
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version: '12.x'
+          node-version: 12
           registry-url: 'https://npm.pkg.github.com'
           scope: '@whthduck'
-      - run: yarn
-      - run: yarn build 
-      - run: yarn publish
+
+      - run: yarn && yarn build
+
+      - name: Pushlish to NPM
+        run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GIT_TOKEN }}
+
+      - name: Pushlish to NPM
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          registry: https://registry.npmjs.org/
