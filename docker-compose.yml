@@ -1,0 +1,11 @@
+version: '3.3'
+
+services:
+  flaword-builder:
+    build: ./
+    image: flaword/builder
+    container_name: flaword-builder
+    volumes:
+      - ./dist:/usr/src/dist
+    command: "cp -r dist .."
+
