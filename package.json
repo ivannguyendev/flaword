@@ -25,7 +25,8 @@
     "NoSQL injection",
     "harmful",
     "validation",
-    "Javascript injection"
+    "Javascript injection",
+    "nodejs"
   ],
   "dependencies": {
     "debug": "^4.3.4",
